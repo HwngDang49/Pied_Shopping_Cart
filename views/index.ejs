@@ -1,11 +1,103 @@
 <!doctype html>
-<html lang="en">
+<html lang="vi">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>demo provinces api</title>
   </head>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/css/boxicons.min.css" />
+  <link rel="stylesheet" href="/css/style.css" />
   <body>
-    <p>hi</p>
+    <div class="container">
+      <div class="form">
+        <div class="header"><span class="header-text">Địa chỉ mới</span></div>
+
+        <div class="form-content">
+          <div class="user-input">
+            <div class="input userName-input">
+              <input type="text" placeholder="Họ và tên" class="userName" />
+              <i class="bx bx-user"></i>
+            </div>
+
+            <div class="input phone-input">
+              <input type="text" placeholder="Số điện thoại" class="phoneNumber" />
+              <i class="bx bx-phone"></i>
+            </div>
+          </div>
+
+          <div class="address-select">
+            <div class="address-input">
+              <input type="text" placeholder="Tỉnh/Thành phố, Quận/Huyện, Phường/Xã" id="address" autocomplete="off" />
+              <i class="bx bx-package"></i>
+              <i class="bx bx-chevron-down" id="icon"></i>
+            </div>
+
+            <div class="select">
+              <div class="option-header">
+                <div class="provinces" id="provinces">Tỉnh/Thành phố</div>
+                <div class="districts" id="districts">Quận/Huyện</div>
+                <div class="wards" id="wards">Phường/Xã</div>
+              </div>
+              <ul class="options options-provinces"></ul>
+              <ul class="options options-districts"></ul>
+              <ul class="options options-wards"></ul>
+            </div>
+          </div>
+
+          <div class="hidden">
+            <div class="more-detail">
+              <input type="text" placeholder="Địa chỉ cụ thể" id="detail-input" />
+              <i class="bx bx-edit"></i>
+            </div>
+
+            <div class="picking-form">
+              <div class="picking-btn">
+                <div class="btn home-btn">
+                  <i class="bx bx-square-rounded"></i>
+                  <span class="home-btn-text">Nhà Riêng</span>
+                </div>
+                <div class="btn office-btn">
+                  <i class="bx bx-square-rounded"></i>
+                  <span class="office-btn-text">Văn Phòng</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="submit-btn">
+              <button class="submit">Hoàn Thành</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- form -->
+    <!-- input form -->
+    <div class="info-form">
+      <div class="header">
+        <span class="header-text">Địa Chỉ Của Tôi</span>
+      </div>
+      <div class="user-box">
+        <div class="info-box">
+          <div class="info-header">
+            <div class="name">Name : Đặng Thành Hưng</div>
+            <div class="phone">Phone : 0357010574</div>
+          </div>
+
+          <div class="address-text">Address:</div>
+          <div class="info-detail">Tòa S10.01, The Origami - Vinhomes Grand Park, Nguyễn Xiển</div>
+
+          <div class="info-address">Phường Long Bình, Thành Phố Thủ Đức, TP. Hồ Chí Minh</div>
+        </div>
+      </div>
+    </div>
+    <!-- js -->
+    <script src="/scripts/script.js"></script>
   </body>
 </html>

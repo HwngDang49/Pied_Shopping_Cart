@@ -10,11 +10,10 @@ const PORT = 3000
 databaseService.connect()
 //server dùng 1 middleWare biến đổi req thành json
 
+app.use(express.json()) //middleWare toàn cục
 app.set('view engine', 'ejs')
 app.set('views', './views')
 app.use(express.static('public'))
-
-app.use(express.json()) //middleWare toàn cục
 //server dung cai route da tao
 app.use('/users', userRouter)
 
