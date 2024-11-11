@@ -247,7 +247,7 @@ class UsersServices {
 
     console.log(`
       mô phỏng gửi link qua mail để đổi mật khẩu:
-      http://localhost:8000/reset-password/?forgot_password_token=${forgot_password_token}
+      http://localhost:3000/users/reset-password/?forgot_password_token=${forgot_password_token}
     `)
   }
 

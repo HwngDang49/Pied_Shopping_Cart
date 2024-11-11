@@ -120,6 +120,10 @@ userRouter.post('/resend-verify-email', accessTokenValidator, wrapAsync(resendEm
     }
 */
 
+userRouter.get('/forgot-password', (req, res) => {
+  res.render('forgotPassword')
+})
+
 userRouter.post('/forgot-password', forgotPasswordValidator, wrapAsync(forgotPasswordController))
 
 /*
@@ -146,6 +150,11 @@ userRouter.post(
     forgot_password_token: string
     }
 */
+
+userRouter.get('/reset-password', (req, res) => {
+  const { forgot_password_token } = req.query
+  res.render('resetPassword', { forgot_password_token })
+})
 
 userRouter.post(
   '/reset-password',
@@ -190,7 +199,7 @@ userRouter.patch(
   wrapAsync(updateMeController) //tiến hành cập nhật
 )
 
-userRouter.get('/index', (req, res) => {
-  res.render('index')
-})
+// userRouter.get('/index', (req, res) => {
+//   res.render('index')
+// })
 export default userRouter
