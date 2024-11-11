@@ -190,5 +190,7 @@ userRouter.patch(
   wrapAsync(updateMeController) //tiến hành cập nhật
 )
 
-// userRouter.get('/index', (req, res) => {})
+userRouter.get('/index', (req, res) => {
+  res.render('index')
+})
 export default userRouter
