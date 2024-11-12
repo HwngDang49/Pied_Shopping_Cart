@@ -108,6 +108,7 @@ class UsersServices {
       new User({
         _id: user_id,
         email_verify_token,
+        username: `user${user_id.toString()}`,
         ...payload,
         password: hashPassword(payload.password),
         date_of_birth: new Date(payload.date_of_birth)
@@ -331,6 +332,69 @@ class UsersServices {
       } //cập nhật xong thì đưa user cập nhật về
     )
     return user
+  }
+
+  async changePassword({
+    user_id,
+    old_password, //
+    password
+  }: {
+    user_id: string
+    old_password: string
+    password: string
+  }) {
+    //tìm xem với user_id và old_password có tìm được user không
+    const user = await databaseService.users.findOne({
+      _id: new ObjectId(user_id),
+      password: hashPassword(old_password)
+    })
+
+    //nếu không có user thì nghĩa là client không phải chủ account
+    if (!user) {
+      throw new ErrorWithStatus({
+        status: HTTP_STATUS.UNAUTHORIZED,
+        message: USERS_MESSAGES.USER_NOT_FOUND
+      })
+    }
+
+    //NẾU CÓ user thì nghĩa là đúng và tiến hành cập nhật
+    await databaseService.users.updateOne({ _id: new ObjectId(user_id) }, [
+      {
+        $set: {
+          password: hashPassword(password),
+          updated_at: '$$NOW'
+        }
+      }
+    ])
+  }
+
+  async refreshToken({
+    user_id, //
+    refresh_token
+  }: {
+    user_id: string
+    refresh_token: string
+  }) {
+    //tạo ac và rf mới
+    const [access_token, new_refresh_token] = await Promise.all([
+      this.signAccessToken(user_id),
+      this.signRefreshToken(user_id)
+    ])
+    //lưu rf mới
+    await databaseService.refreshTokens.insertOne(
+      new RefreshToken({
+        token: new_refresh_token,
+        user_id: new ObjectId(user_id)
+      })
+    )
+    //xóa rf cũ
+    await databaseService.refreshTokens.deleteOne({ token: refresh_token })
+
+    //ném ra ac và rf mới cho người dùng
+    return {
+      access_token,
+      refresh_token: new_refresh_token
+    }
   }
 }
 

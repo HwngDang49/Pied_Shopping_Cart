@@ -57,5 +57,9 @@ export const USERS_MESSAGES = {
   USERNAME_LENGTH_MUST_BE_LESS_THAN_50: 'Username length must be less than 50',
   EMAIL_HAS_BEEN_UNVERIFIED: 'Email has been unverified',
   USERNAME_ALREADY_EXISTS: 'Username already exists',
-  UPDATE_PROFILE_SUCCESS: 'Update profile successfully'
+  UPDATE_PROFILE_SUCCESS: 'Update profile successfully',
+  USERNAME_IS_INVALID:
+    'Username must be a string and length must be 4 - 15, and contain only letters, numbers, and underscores, not only numbers',
+  CHANGE_PASSWORD_SUCCESS: 'Change password success',
+  REFRESH_TOKEN_SUCCESS: 'refresh token successfully'
 } as const
