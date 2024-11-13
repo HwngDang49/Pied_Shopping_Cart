@@ -63,10 +63,11 @@ export const loginController = async (
   //muốn kiểm tra phải thông qua service
   const result = await usersServices.login({ email, password })
 
-  res.status(HTTP_STATUS.OK).json({
-    message: USERS_MESSAGES.LOGIN_SUCCESS,
-    result
-  })
+  // res.status(HTTP_STATUS.OK).json({
+  //   message: USERS_MESSAGES.LOGIN_SUCCESS,
+  //   result
+  // })
+  res.render('loginSuccess')
 }
 
 export const logoutController = async (

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>login</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Sniglet:wght@400;800&family=Teko:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sniglet:wght@400;800&family=Teko:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/css/boxicons.min.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+
+    <link rel="stylesheet" href="/css/login.css" />
+  </head>
+  <body>
+    <div class="container">
+      <form action="/users/login" method="post">
+        <span class="pied-shop">PIED SHOP</span>
+
+        <div class="input email">
+          <input type="email" placeholder="EMAIL" name="email" required autocomplete="off" />
+          <i class="bx bx-user"></i>
+        </div>
+
+        <div class="input password">
+          <input type="password" placeholder="PASSWORD" name="password" required autocomplete="off" />
+          <i class="bx bx-lock-alt"></i>
+        </div>
+
+        <div class="login-btn">
+          <button type="submit">LOGIN</button>
+        </div>
+
+        <a href="http://localhost:3000/users/forgot-password" class="forgot-password">Forgot Password?</a>
+      </form>
+    </div>
+  </body>
+</html>

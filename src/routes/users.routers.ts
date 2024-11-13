@@ -66,7 +66,9 @@ userRouter.post('/register', registerValidator, wrapAsync(registerController))
 
 //  // khi mà chọn chức năng login
 //mdw sẽ kiểm tra email và pass có đầy đủ hong
-
+userRouter.get('/login', (req, res) => {
+  res.render('login')
+})
 userRouter.post('/login', loginValidator, wrapAsync(loginController))
 
 /*
