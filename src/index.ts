@@ -5,6 +5,7 @@ import databaseService from './services/database.services'
 import { defaultErrorHandler } from './middlewares/error.middlewares'
 import mediaRouter from './routes/medias.routers'
 import { initFolder } from './utils/file'
+import staticRouter from './routes/static.routers'
 
 const app = express()
 const PORT = 3000
@@ -17,7 +18,7 @@ app.use(express.json()) //middleWare toàn cục
 //server dung cai route da tao
 app.use('/users', userRouter)
 app.use('/medias', mediaRouter)
-
+app.use('/static', staticRouter)
 //xử lí lỗi tổng
 app.use(defaultErrorHandler)
 

@@ -1,37 +1,27 @@
 import { Request, Response, NextFunction } from 'express'
-import formidable from 'formidable'
-import path, { resolve } from 'path'
+import HTTP_STATUS from '~/constants/httpStatus'
+import mediasServices from '~/services/medias.services'
 
-export const uploadSingleImageController = async (
+export const uploadImageController = async (
   req: Request,
   res: Response, //
   next: NextFunction
 ) => {
-  //test
-  //__dirname: đường dẫn đến folder đang chạy file này
-  //  console.log(path.resolve('uploads'))  : cung cấp đường dẫn đến thư mục mà mình muốn lưu trữ
-
-  //tạo cái khung để khi người dùng gửi file lên sẽ
-  //bị mình dùng khung đó để kiểm tra hay gọi là (ép kiểu)
-  const form = formidable({
-    maxFields: 1, //tối đa 1 file
-    maxFieldsSize: 1024 * 300, // 1 hình tối đa 300kb
-    keepExtensions: true, //giữ lại đuôi của file để kiểm tra sau
-    uploadDir: path.resolve('uploads')
+  const infor = await mediasServices.handleUploadImage(req)
+  res.json({
+    message: 'success',
+    infor
   })
+}
 
-  //đã chuẩn bị xong form để kiểm tra các file rồi
-  //giờ mình sẽ dùng form để kiểm tra request người dùng gửi lên
-
-  form.parse(req, (err, fields, files) => {
-    //nhận vào 1 callback vì có khả năng thất bại
-    //files là object chứa các file do người dùng gửi lên
-    if (err) {
-      throw err
-    } else {
-      res.json({
-        message: 'Upload image successfully'
-      })
-    }
+export const uploadVideoController = async (
+  req: Request,
+  res: Response, //
+  next: NextFunction
+) => {
+  const infor = await mediasServices.handleUploadVideo(req)
+  res.status(HTTP_STATUS.OK).json({
+    message: 'Upload video successfully',
+    infor
   })
 }
